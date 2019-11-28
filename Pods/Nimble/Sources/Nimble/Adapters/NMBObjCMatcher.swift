@@ -53,7 +53,7 @@ public class NMBObjCMatcher: NSObject, NMBMatcher {
         return true
     }
 
-    public func matches(_ actualBlock: @escaping () -> NSObject!, failureMessage: FailureMessage, location: SourceLocation) -> Bool {
+    public func matches(_ actualBlock: @escaping () -> NSObject?, failureMessage: FailureMessage, location: SourceLocation) -> Bool {
         let expr = Expression(expression: actualBlock, location: location)
         let result = _match(
             expr,
@@ -65,7 +65,7 @@ public class NMBObjCMatcher: NSObject, NMBMatcher {
         }
     }
 
-    public func doesNotMatch(_ actualBlock: @escaping () -> NSObject!, failureMessage: FailureMessage, location: SourceLocation) -> Bool {
+    public func doesNotMatch(_ actualBlock: @escaping () -> NSObject?, failureMessage: FailureMessage, location: SourceLocation) -> Bool {
         let expr = Expression(expression: actualBlock, location: location)
         let result = _doesNotMatch(
             expr,

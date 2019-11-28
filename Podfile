@@ -3,7 +3,7 @@ platform :ios, '11.0'
 target 'SelfSignedCert' do
   use_frameworks!
 
-  pod 'IDZSwiftCommonCrypto', '~> 0.7'
+  pod 'IDZSwiftCommonCrypto'
   pod 'SwiftBytes', '~> 0.2'
   pod 'SecurityExtensions', '~> 3.0'
 
