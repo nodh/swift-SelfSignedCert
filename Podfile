@@ -5,7 +5,7 @@ target 'SelfSignedCert' do
 
   pod 'IDZSwiftCommonCrypto'
   pod 'SwiftBytes'
-  pod 'SecurityExtensions'
+  pod 'SecurityExtensions', :git => 'https://github.com/Adis/swift-SecurityExtensions.git'
 
   target 'SelfSignedCertTests' do
     pod 'Quick'
