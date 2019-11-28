@@ -4,12 +4,12 @@ target 'SelfSignedCert' do
   use_frameworks!
 
   pod 'IDZSwiftCommonCrypto'
-  pod 'SwiftBytes', '~> 0.2'
-  pod 'SecurityExtensions', '~> 3.0'
+  pod 'SwiftBytes'
+  pod 'SecurityExtensions'
 
   target 'SelfSignedCertTests' do
-    pod 'Quick', '~> 1.1'
-    pod 'Nimble', '~> 6.1'
+    pod 'Quick'
+    pod 'Nimble'
   end
 
 end
