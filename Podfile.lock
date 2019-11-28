@@ -4,30 +4,34 @@ PODS:
   - Quick (2.2.0)
   - SecurityExtensions (3.0.2):
     - IDZSwiftCommonCrypto (~> 0.9)
-  - SwiftBytes (0.6.1)
 
 DEPENDENCIES:
   - IDZSwiftCommonCrypto
   - Nimble
   - Quick
-  - SecurityExtensions
-  - SwiftBytes
+  - SecurityExtensions (from `https://github.com/Adis/swift-SecurityExtensions.git`)
 
 SPEC REPOS:
   trunk:
     - IDZSwiftCommonCrypto
     - Nimble
     - Quick
-    - SecurityExtensions
-    - SwiftBytes
+
+EXTERNAL SOURCES:
+  SecurityExtensions:
+    :git: https://github.com/Adis/swift-SecurityExtensions.git
+
+CHECKOUT OPTIONS:
+  SecurityExtensions:
+    :commit: b9c9a35351a7d9b1f3d56c4d39747a3148457e9e
+    :git: https://github.com/Adis/swift-SecurityExtensions.git
 
 SPEC CHECKSUMS:
   IDZSwiftCommonCrypto: 00dd37cdfbd149312a7e5a582cf9909f8b129f44
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
-  SecurityExtensions: fe8359cd9fda03545acc973ab105f1f17d973832
-  SwiftBytes: 5e7a2a561fb22bfabf4da94b3ced1d0391ca916f
+  SecurityExtensions: df449002041860d435b61016087431869a865cdd
 
-PODFILE CHECKSUM: d8257e38283dfcc26a1d6fe90b6ee161e8aeb3bb
+PODFILE CHECKSUM: ee8b430d4484d097ff068fa0bc9581af7840b5b3
 
 COCOAPODS: 1.8.4

@@ -4,7 +4,6 @@ target 'SelfSignedCert' do
   use_frameworks!
 
   pod 'IDZSwiftCommonCrypto'
-  pod 'SwiftBytes'
   pod 'SecurityExtensions', :git => 'https://github.com/Adis/swift-SecurityExtensions.git'
 
   target 'SelfSignedCertTests' do

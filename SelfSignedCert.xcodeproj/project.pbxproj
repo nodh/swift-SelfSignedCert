@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494B87DF239007260061F4F7 /* Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B87DE239007250061F4F7 /* Bytes.swift */; };
+		494B87E1239007B10061F4F7 /* BytesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B87E0239007B10061F4F7 /* BytesTests.swift */; };
 		D88FC341A132926F20AC6032 /* Pods_SelfSignedCert_SelfSignedCertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD23127710BC95FA3D99D6E7 /* Pods_SelfSignedCert_SelfSignedCertTests.framework */; };
 		F20FF2050E935FEB6DE3C99C /* Pods_SelfSignedCert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBC68B68E46D467E8BB4AFC /* Pods_SelfSignedCert.framework */; };
 		F81B16AF1CEA19FB00C1EBD8 /* OIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B16AE1CEA19FB00C1EBD8 /* OIDTests.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		05A7DF70B381EC92BF7DDEE8 /* Pods-SelfSignedCert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfSignedCert.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelfSignedCert/Pods-SelfSignedCert.release.xcconfig"; sourceTree = "<group>"; };
 		4836078350871F932B2FC1ED /* Pods-SelfSignedCert-SelfSignedCertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfSignedCert-SelfSignedCertTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelfSignedCert-SelfSignedCertTests/Pods-SelfSignedCert-SelfSignedCertTests.release.xcconfig"; sourceTree = "<group>"; };
+		494B87DE239007250061F4F7 /* Bytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bytes.swift; sourceTree = "<group>"; };
+		494B87E0239007B10061F4F7 /* BytesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytesTests.swift; sourceTree = "<group>"; };
 		BEBC68B68E46D467E8BB4AFC /* Pods_SelfSignedCert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelfSignedCert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90CB0D9424155ACF2F629DA /* Pods-SelfSignedCert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfSignedCert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelfSignedCert/Pods-SelfSignedCert.debug.xcconfig"; sourceTree = "<group>"; };
 		DA4EEC696B3BA3AC825153AC /* Pods-SelfSignedCert-SelfSignedCertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfSignedCert-SelfSignedCertTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelfSignedCert-SelfSignedCertTests/Pods-SelfSignedCert-SelfSignedCertTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		494B87DD239007250061F4F7 /* SwiftBytes */ = {
+			isa = PBXGroup;
+			children = (
+				494B87DE239007250061F4F7 /* Bytes.swift */,
+			);
+			path = SwiftBytes;
+			sourceTree = "<group>";
+		};
 		F580BAF709943D3830AA7760 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 		F8B8C5501CDBCCB800FC4174 /* SelfSignedCert */ = {
 			isa = PBXGroup;
 			children = (
+				494B87DD239007250061F4F7 /* SwiftBytes */,
 				F8B8C5681CDBD32A00FC4174 /* SecIdentity+SelfSigned.swift */,
 				F8B8C56C1CDBDBBE00FC4174 /* CertificateRequest.swift */,
 				F8CF9ECE1CEA024600702C68 /* CertificateName.swift */,
@@ -156,6 +169,7 @@
 		F8B8C55C1CDBCCB800FC4174 /* SelfSignedCertTests */ = {
 			isa = PBXGroup;
 			children = (
+				494B87E0239007B10061F4F7 /* BytesTests.swift */,
 				F855135A1CE772210023ADEF /* certdata.der */,
 				F855135B1CE772210023ADEF /* pubkey.bin */,
 				F8B8C55F1CDBCCB800FC4174 /* Info.plist */,
@@ -289,7 +303,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-SelfSignedCert-SelfSignedCertTests/Pods-SelfSignedCert-SelfSignedCertTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IDZSwiftCommonCrypto/IDZSwiftCommonCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/SecurityExtensions/SecurityExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftBytes/SwiftBytes.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -297,7 +310,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDZSwiftCommonCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SecurityExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBytes.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -356,6 +368,7 @@
 				F8CF9ECF1CEA024600702C68 /* CertificateName.swift in Sources */,
 				F855135F1CE7AC7F0023ADEF /* ASN1Object.swift in Sources */,
 				F86D2E001CF48D170036B444 /* SecCertificate+Keychain.swift in Sources */,
+				494B87DF239007260061F4F7 /* Bytes.swift in Sources */,
 				F8B8C57D1CE4DBA700FC4174 /* OID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +382,7 @@
 				F8B8C55E1CDBCCB800FC4174 /* SecIdentity+SelfSignedTests.swift in Sources */,
 				F8B8C5771CDCF42800FC4174 /* DERTests.swift in Sources */,
 				F8B8C5711CDCDE0F00FC4174 /* CertificateRequestTests.swift in Sources */,
+				494B87E1239007B10061F4F7 /* BytesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
