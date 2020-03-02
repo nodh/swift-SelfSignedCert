@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
   s.source_files  = "SelfSignedCert/**/*.swift"
   s.dependency "IDZSwiftCommonCrypto"
   s.dependency "SwiftBytes"
-  s.dependency "SecurityExtensions", :git => 'https://github.com/Adis/swift-SecurityExtensions.git'
+  s.dependency "SecurityExtensions"
 end
