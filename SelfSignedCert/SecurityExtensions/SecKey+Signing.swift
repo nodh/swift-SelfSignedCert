@@ -38,6 +38,7 @@ extension SecKey {
      * - parameter data: the data to sign
      * - returns: The signature of the data, or `nil` if signing failed.
      */
+    @available(iOS 10.0, *)
     public func signEc(data:[UInt8]) -> [UInt8]? {
         var error: Unmanaged<CFError>?
         let input = Data(data)

@@ -49,6 +49,7 @@ extension SecIdentity
      * - parameter subjectEmailAddress: the email address of the subject of the self-signed certificate that is created
      * - returns: The created identity, or `nil` when there was an error.
      */
+    @available(iOS 10.0, *)
     public static func createEc(ofSize bits:UInt = 256, subjectCommonName name:String, subjectEmailAddress email:String) -> SecIdentity? {
         let privKey: SecKey
         let pubKey: SecKey

@@ -87,6 +87,7 @@ struct CertificateRequest {
         return signedInfo.toDER()
     }
     
+    @available(iOS 10.0, *)
     func selfSignEc(withPrivateKey key:SecKey) -> [UInt8]? {
         guard let info = self.info(usingSubjectAsIssuer:true) else {
             return nil
