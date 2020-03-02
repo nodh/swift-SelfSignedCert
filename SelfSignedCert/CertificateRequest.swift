@@ -86,6 +86,21 @@ struct CertificateRequest {
         let signedInfo: NSArray = [ info, [OID.rsaWithSHA1AlgorithmID, NSNull()], signature]
         return signedInfo.toDER()
     }
+    
+    func selfSignEc(withPrivateKey key:SecKey) -> [UInt8]? {
+        guard let info = self.info(usingSubjectAsIssuer:true) else {
+            return nil
+        }
+
+        let dataToSign = info.toDER()
+        guard let signedData = key.signEc(data:dataToSign) else {
+            return nil
+        }
+        let signature = BitString(data: Data(signedData))
+        
+        let signedInfo: NSArray = [ info, [OID.ecWithSHA256AlgorithmID, NSNull()], signature]
+        return signedInfo.toDER()
+    }
 }
 
 extension CertificateRequest {

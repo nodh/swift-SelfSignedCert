@@ -28,4 +28,24 @@ extension SecKey {
         return Array(realSignature)
     }
     
+    /**
+     * Computes the digital signature of the given data using the current key. This method takes the SHA256 hash of the data
+     * and passes that into `SecKeyCreateSignature` with `ecdsaSignatureMessageX962SHA256` padding.
+     *
+     * Please note that normally this assumes that the current key
+     * is a private key, but that is not verified here.
+     *
+     * - parameter data: the data to sign
+     * - returns: The signature of the data, or `nil` if signing failed.
+     */
+    public func signEc(data:[UInt8]) -> [UInt8]? {
+        var error: Unmanaged<CFError>?
+        let input = Data(data)
+        guard let signatureData = SecKeyCreateSignature(self, .ecdsaSignatureMessageX962SHA256, input  as CFData, &error) as Data?,
+            error == nil else {
+            return nil
+        }
+        return [UInt8](signatureData)
+    }
+    
 }

@@ -6,7 +6,7 @@ import IDZSwiftCommonCrypto
 
 extension SecIdentity
 {
-
+    
     /**
      * Create an identity using a self-signed certificate. This can fail in many ways, in which case it will return `nil`.
      * Since potential failures are non-recoverable, no details are provided in that case.
@@ -28,6 +28,39 @@ extension SecIdentity
         let certRequest = CertificateRequest(forPublicKey:pubKey, subjectCommonName: name, subjectEmailAddress: email, keyUsage: [.DigitalSignature, .DataEncipherment])
 
         guard let signedBytes = certRequest.selfSign(withPrivateKey:privKey),
+            let signedCert = SecCertificateCreateWithData(nil, Data(signedBytes) as CFData) else {
+            return nil
+        }
+        
+        let err = signedCert.storeInKeychain()
+        guard err == errSecSuccess else {
+            return nil
+        }
+
+        return findIdentity(forPrivateKey:privKey, publicKey:pubKey)
+    }
+    
+    /**
+     * Create an identity using a self-signed certificate. This can fail in many ways, in which case it will return `nil`.
+     * Since potential failures are non-recoverable, no details are provided in that case.
+     *
+     * - parameter ofSize: size of the keys, in bits; default is 3072
+     * - parameter subjectCommonName: the common name of the subject of the self-signed certificate that is created
+     * - parameter subjectEmailAddress: the email address of the subject of the self-signed certificate that is created
+     * - returns: The created identity, or `nil` when there was an error.
+     */
+    public static func createEc(ofSize bits:UInt = 256, subjectCommonName name:String, subjectEmailAddress email:String) -> SecIdentity? {
+        let privKey: SecKey
+        let pubKey: SecKey
+        do {
+            (privKey,pubKey) = try SecKey.generateKeyPairEc(ofSize: bits)
+        }
+        catch {
+            return nil
+        }
+        let certRequest = CertificateRequest(forPublicKey:pubKey, subjectCommonName: name, subjectEmailAddress: email, keyUsage: [.DigitalSignature, .DataEncipherment])
+
+        guard let signedBytes = certRequest.selfSignEc(withPrivateKey:privKey),
             let signedCert = SecCertificateCreateWithData(nil, Data(signedBytes) as CFData) else {
             return nil
         }

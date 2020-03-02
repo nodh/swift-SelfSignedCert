@@ -4,7 +4,37 @@ import Security
 public typealias KeyPair = (privateKey:SecKey, publicKey:SecKey)
 
 extension SecKey {
+    
+    /**
+     * Generates an EC private-public key pair. Wraps `SecKeyGeneratePair()`.
+     *
+     * - parameter ofSize: the size of the keys in bits
+     * - returns: The generated key pair.
+     * - throws: A `SecKeyError` when something went wrong.
+     */
+    public static func generateKeyPairEc(ofSize bits:UInt) throws -> KeyPair {
+        let pubKeyAttrs = [ kSecAttrIsPermanent as String: true ]
+        let privKeyAttrs = [ kSecAttrIsPermanent as String: true ]
+        let params: NSDictionary = [ kSecAttrKeyType as String : kSecAttrKeyTypeEC as String,
+                       kSecAttrKeySizeInBits as String : bits,
+                       kSecPublicKeyAttrs as String : pubKeyAttrs,
+                       kSecPrivateKeyAttrs as String : privKeyAttrs ]
+        var pubKey: SecKey?
+        var privKey: SecKey?
+        let status = SecKeyGeneratePair(params, &pubKey, &privKey)
+        guard status == errSecSuccess else {
+            throw SecKeyError.generateKeyPairFailed(osStatus: status)
+        }
+        guard let pub = pubKey, let priv = privKey else {
+            throw SecKeyError.generateKeyPairFailed(osStatus: nil)
+        }
 
+        try changeKeyTag(priv)
+        try changeKeyTag(pub)
+
+        return (priv, pub)
+    }
+    
     /**
      * Generates an RSA private-public key pair. Wraps `SecKeyGeneratePair()`.
      *

@@ -22,6 +22,4 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/svdo/swift-SelfSignedCert.git", :tag => "#{s.version}" }
   s.source_files  = "SelfSignedCert/**/*.swift"
   s.dependency "IDZSwiftCommonCrypto"
-  s.dependency "SwiftBytes"
-  s.dependency "SecurityExtensions"
 end
