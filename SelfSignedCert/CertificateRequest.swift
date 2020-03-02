@@ -89,7 +89,7 @@ struct CertificateRequest {
     
     @available(iOS 10.0, *)
     func selfSignEc(withPrivateKey key:SecKey) -> [UInt8]? {
-        guard let info = self.info(usingSubjectAsIssuer:true) else {
+        guard let info = self.infoEc(usingSubjectAsIssuer:true) else {
             return nil
         }
 
@@ -107,7 +107,7 @@ struct CertificateRequest {
 extension CertificateRequest {
     func info(usingSubjectAsIssuer: Bool = false) -> NSArray? {
         precondition(publicKeyDerEncoder != nil)
-        
+
         let empty = NSNull()
         let version = ASN1Object(
             tag:0, tagClass:2, components:[
@@ -130,7 +130,33 @@ extension CertificateRequest {
         ]
         return info
     }
-    
+
+    func infoEc(usingSubjectAsIssuer: Bool = false) -> NSArray? {
+        precondition(publicKeyDerEncoder != nil)
+
+        let empty = NSNull()
+        let version = ASN1Object(
+                tag:0, tagClass:2, components:[
+            NSNumber(value: 3 /*kCertRequestVersionNumber*/ - 1 )
+        ]
+        )
+        guard let bytes = publicKeyDerEncoder?(publicKey) else {
+            return nil
+        }
+        let encodedPubKey = Data(bytes)
+        let pubKeyBitStringArray : NSArray = [ [OID.ecPublicKeyTypeID, OID.ecPrime256v1ID], BitString(data:encodedPubKey) ]
+        let subject = CertificateName()
+        subject.commonName = subjectCommonName
+        subject.emailAddress = subjectEmailAddress
+        let ext = ASN1Object(tag: 3, tagClass: 2, components: [extensions() as NSObject])
+        let subjectComponents = subject.components
+        let info : NSArray = [
+            version, NSNumber(value: serialNumber as UInt64), [ OID.ecWithSHA256AlgorithmID ], usingSubjectAsIssuer ? subjectComponents : [], [validFrom, validTo],
+            subjectComponents, pubKeyBitStringArray, ext
+        ]
+        return info
+    }
+
     func toDER() -> [UInt8]? {
         return info()?.toDER()
     }

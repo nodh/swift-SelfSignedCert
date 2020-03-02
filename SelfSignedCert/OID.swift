@@ -41,6 +41,8 @@ extension OID {
     //    static let rsaWithSHA256AlgorithmID = OID(components:[1, 2, 840, 113549, 1, 1, 11])
     //    static let rsaWithMD5AlgorithmID = OID(components:[1, 2, 840, 113549, 1, 1, 4 ])
     //    static let rsaWithMD2AlgorithmID = OID(components:[1, 2, 840, 113549, 1, 1, 2])
+    @nonobjc static let ecPublicKeyTypeID = OID(components:[1, 2, 840, 10045, 2, 1])
+    @nonobjc static let ecPrime256v1ID = OID(components:[1, 2, 840, 10045, 3, 1, 7])
     @nonobjc static let ecWithSHA1AlgorithmID = OID(components:[1, 2, 840, 10045, 4, 1])
     @nonobjc static let ecWithSHA256AlgorithmID = OID(components:[1, 2, 840, 10045, 4, 3, 2])
     
