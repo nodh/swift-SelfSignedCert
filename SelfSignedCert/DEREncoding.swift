@@ -23,6 +23,9 @@ extension UnsignedInteger {
         }
         return bytes
     }
+    func encodeForLength() -> [UInt8] {
+        return Bytes.bytes(UInt64(self)).removeLeadingZeros()
+    }
     func toDER() -> [UInt8] {
         return writeDER(tag: 2, constructed: false, bytes: self.encodeForDER())
     }
@@ -339,7 +342,7 @@ func writeDERHeader(tag:UInt8, tagClass:UInt8 = 0, constructed:Bool, length:UInt
     }
     else {
         let l = UInt64(length)
-        headerExtraLength = l.encodeForDER()
+        headerExtraLength = l.encodeForLength()
         headerByte2 = UInt8(headerExtraLength.count) | 0x80
     }
     return [headerByte1] + [headerByte2] + headerExtraLength
